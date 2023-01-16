@@ -37,6 +37,8 @@ export const FormComponent = () => {
     axios.get(api_url)
       .then((res)=>{
         console.log(res);
+        console.log(res['data']);
+
         set_api_textArea1(res.data['text']);
         set_textArea1(res.data['text']);
       })
