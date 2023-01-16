@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
-
 const ORIGIN = window.location.href;
 const api_url = ORIGIN + "text";
 console.log("This app is running on the Origin: "+ORIGIN);
@@ -38,9 +37,21 @@ export const FormComponent = () => {
       .then((res)=>{
         console.log(res);
         console.log(res['data']);
+        console.log(res['data']['text']);
+        console.log(typeof(process.env.REACT_APP_DEV_FLG));
+        console.log(process.env.REACT_APP_DEV_FLG);
 
-        set_api_textArea1(res.data['text']);
-        set_textArea1(res.data['text']);
+
+        let json_data;
+        json_data = res['data']['text'];
+        // produciton
+        if (0 === process.env.REACT_APP_DEV_FLG) {
+          json_data = res['data']['text'];
+        }
+
+
+        set_api_textArea1(json_data);
+        set_textArea1(json_data);
       })
       .catch(error => {
         console.log(error);
