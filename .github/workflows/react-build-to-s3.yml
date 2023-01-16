@@ -22,3 +22,15 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: 
           aws s3 sync --delete --region ap-northeast-1 ./build/ s3://cache-text-front/
+          
+
+      - name: Clear cache in CloudFront
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          PATHS: "/"
+          AWS_REGION: "ap-northeast-1"
+          DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
+
+        uses: chetan/invalidate-cloudfront-action@v1.2
+          
