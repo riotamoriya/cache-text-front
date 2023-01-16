@@ -36,18 +36,13 @@ export const FormComponent = () => {
     axios.get(api_url)
       .then((res)=>{
         console.log(res);
-        console.log(res['data']);
-        console.log(res['data']['text']);
-        console.log(res['data']['updated']);
 
         let json_data;
-        json_data = res['data']['updated'];
-        // produciton
-        if ("0" === process.env.REACT_APP_DEV_FLG) {
-          console.log("enter if")
+        if ("0" === process.env.REACT_APP_DEV_FLG) { // produciton
           json_data = res['data']['text'];
         }
 
+        json_data = json_data === "" ? "(null)" : json_data;
 
         set_api_textArea1(json_data);
         set_textArea1(json_data);
