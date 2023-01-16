@@ -8,9 +8,8 @@ import axios from 'axios';
 
 
 const ORIGIN = window.location.href;
-console.log("This app is running on the Origin: "+ORIGIN);
-
 const api_url = ORIGIN + "text";
+console.log("This app is running on the Origin: "+ORIGIN);
 console.log("Connecting API-URL: "+api_url);
 
 export const FormComponent = () => {
@@ -37,6 +36,7 @@ export const FormComponent = () => {
   useEffect(() => {
     axios.get(api_url)
       .then((res)=>{
+        console.log(res);
         set_api_textArea1(res.data['text']);
         set_textArea1(res.data['text']);
       })
