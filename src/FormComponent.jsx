@@ -38,14 +38,13 @@ export const FormComponent = () => {
         console.log(res);
         console.log(res['data']);
         console.log(res['data']['text']);
-        console.log(typeof(process.env.REACT_APP_DEV_FLG));
-        console.log(process.env.REACT_APP_DEV_FLG);
-
+        console.log(res['data']['updated']);
 
         let json_data;
-        json_data = res['data']['text'];
+        json_data = res['data']['updated'];
         // produciton
-        if (0 === process.env.REACT_APP_DEV_FLG) {
+        if ("0" === process.env.REACT_APP_DEV_FLG) {
+          console.log("enter if")
           json_data = res['data']['text'];
         }
 
