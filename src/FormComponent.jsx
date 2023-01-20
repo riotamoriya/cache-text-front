@@ -42,8 +42,6 @@ export const FormComponent = () => {
           json_data = res['data']['text'];
         }
 
-        json_data = json_data === "" ? "(null)" : json_data;
-
         set_api_textArea1(json_data);
         set_textArea1(json_data);
       })
@@ -60,7 +58,7 @@ export const FormComponent = () => {
         <Container >
           <Row>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Cache a String</Form.Label>
+              <Form.Label>Cache String</Form.Label>
               <Form.Control as="textarea" rows={10} onChange={(e)=>set_textArea1(e.target.value)} value={textArea1} />
             </Form.Group>
           </Row>
