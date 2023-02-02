@@ -58,6 +58,8 @@ export const FormComponent = () => {
     let api_data;
     axios.get(APIURL+'?id=1')
       .then((res)=>{
+        console.log("check the res: ")
+        console.log(res);
         api_data = res['data'];
         const json_data =
           process.env.REACT_APP_DEV_FLG === "0" ? api_data['text'] : api_data[0]['text']
