@@ -58,7 +58,7 @@ export const FormComponent = () => {
   // http GET at first
   useEffect(() => {
     let api_data;
-    axios.get(APIURL+'?id='+ID)
+    axios.get(APIURL+'/'+ID)
       .then((res)=>{
         console.log("check the res: ")
         console.log(res);
