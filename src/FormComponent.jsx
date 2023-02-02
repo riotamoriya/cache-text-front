@@ -11,6 +11,8 @@ import './FormComponent.scss';
 // use origin path
 const ORIGIN = window.location.href;
 const APIURL = ORIGIN + "texts";
+const ID = "3";
+
 console.log("This app is running on the Origin: "+ORIGIN);
 
 
@@ -33,7 +35,7 @@ export const FormComponent = () => {
     }
     else{
       const now = Date.now();
-      axios.patch(APIURL+'/1', {text:textArea1, updated_at:now})
+      axios.patch(APIURL+'/'+ID, {text_string:textArea1, updated_at:now})
       .then((res)=>{
         set_api_textArea1(textArea1);
         setSaved(true)
@@ -56,13 +58,13 @@ export const FormComponent = () => {
   // http GET at first
   useEffect(() => {
     let api_data;
-    axios.get(APIURL+'?id=1')
+    axios.get(APIURL+'?id='+ID)
       .then((res)=>{
         console.log("check the res: ")
         console.log(res);
         api_data = res['data'];
         const json_data =
-          process.env.REACT_APP_DEV_FLG === "0" ? api_data['string'] : api_data[0]['string']
+          process.env.REACT_APP_DEV_FLG === "0" ? api_data['text_string'] : api_data[0]['text_string']
 
         set_api_textArea1(json_data);
         set_textArea1(json_data);
