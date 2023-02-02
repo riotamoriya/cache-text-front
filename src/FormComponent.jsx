@@ -62,7 +62,7 @@ export const FormComponent = () => {
         console.log(res);
         api_data = res['data'];
         const json_data =
-          process.env.REACT_APP_DEV_FLG === "0" ? api_data['text'] : api_data[0]['text']
+          process.env.REACT_APP_DEV_FLG === "0" ? api_data['string'] : api_data[0]['string']
 
         set_api_textArea1(json_data);
         set_textArea1(json_data);
