@@ -6,7 +6,6 @@ import { Button, Form } from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
 import './FormComponent.scss';
 
-// const path = require('path');
 
 // use origin path
 const ORIGIN = window.location.href;
